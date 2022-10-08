@@ -4,8 +4,6 @@ from tkinter import messagebox as mb
 from time import strftime
 from math import ceil, floor
 
-# подрубить потоки для анимаций и удаления сообщения об ошибке/вывода результата
-
 time1 = strftime("%S")
 
 
@@ -52,7 +50,7 @@ class App(tk.Frame):
 
         if len(self.inputList) != self.inputs:
             if mb.askyesno(title="Ошибка!",
-                           message="Вы ввели неверное количество аргументов,\nвы можете продолжить с текущими данными нажав 'Да', а затем 'OK'\nили повторить ввод, нажав кнопку 'Нет'"):
+                           message="Вы ввели неверное количество аргументов,\nвы можете продолжить с текущими данными нажав 'Да'\nили повторить ввод, нажав кнопку 'Нет'"):
                 self.continuePass = True
 
             else:
@@ -120,7 +118,7 @@ class App(tk.Frame):
         self.inputField.after(200, self.onTick)
 
     def drawImages(self):
-        global backpackimage, logoimage  # Россума-опоссума на кол!
+        global backpackimage, logoimage
         backpackimage = tk.PhotoImage(file="backpack.png")
         backpacklabel = tk.Label(self.master, image=backpackimage, bg="white")
         backpacklabel.grid(row=0, column=0, sticky=tk.SW)
@@ -129,6 +127,9 @@ class App(tk.Frame):
         logolabel = tk.Label(self.master, image=logoimage, bg="white")
         logolabel.grid(row=0, column=0, sticky=tk.NE)
 
+    def deleteErrorMessage(self):
+
+        pass
 
 app = App()
 app.onTick()
